@@ -105,3 +105,24 @@ async def execute_data_from_retention_crm(props=None):
     # print("exec time", nd - st)
     return result
 
+async def execute_data_from_retention_crm_prev_day(props=None):
+    st = time.time()
+    database = ret_parameters['database']
+    query = ret_parameters['queryPrevDay']
+    result = await execute_data_from_crm(database, ret_collections, query)
+    nd = time.time()
+    # print("exec time", nd - st)
+    return result
+
+async def execute_data_from_retention_crm_builder(props=None):
+    st = time.time()
+    database = ret_parameters_builder['database']
+    query = ret_parameters_builder['query']
+    queryAll = ret_parameters_builder['queryAll']
+    current_query = query(props) if props else queryAll
+    result = await execute_data_from_crm(database, ret_collections, current_query)
+    nd = time.time()
+    # print("exec time", nd - st)
+    return result
+
+# asyncio.run(execute_data_from_payment_prev_day())
