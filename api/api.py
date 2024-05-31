@@ -37,18 +37,6 @@ async def execute_data_from_payment(props=None):
     # print("exec time", nd - st)
     return result
 
-
-async def execute_data_from_payment_builder(props=None):
-    st = time.time()
-    database = payment_parametrs_builder['database']
-    query = payment_parametrs_builder['query']
-    queryAll = payment_parametrs_builder['queryAll']
-    current_query = query(props) if props else queryAll
-    result = await execute_data_from_crm(database, payment_collection, current_query)
-    # nd = time.time()
-    # print("exec time", nd - st)
-    return result
-
 async def execute_data_from_payment_prev_day(props=None):
     st = time.time()
     database = payment_parametrs['database']
@@ -81,19 +69,6 @@ async def execute_data_from_conversion_crm_prev_day():
     # print(len(result))
     return result
 
-async def execute_data_from_conversion_crm_builder(props=None):
-    st = time.time()
-    database = conv_parameters_builder['database']
-    query = conv_parameters_builder['query']
-    queryAll = conv_parameters_builder['queryAll']
-    current_query = query(props) if props else queryAll
-    result = await execute_data_from_crm(database, conv_collections, current_query)
-    nd = time.time()
-    # print("exec time", nd - st)
-    # print(result)
-    return result
-
-
 async def execute_data_from_retention_crm(props=None):
     st = time.time()
     database = ret_parameters['database']
@@ -110,17 +85,6 @@ async def execute_data_from_retention_crm_prev_day(props=None):
     database = ret_parameters['database']
     query = ret_parameters['queryPrevDay']
     result = await execute_data_from_crm(database, ret_collections, query)
-    nd = time.time()
-    # print("exec time", nd - st)
-    return result
-
-async def execute_data_from_retention_crm_builder(props=None):
-    st = time.time()
-    database = ret_parameters_builder['database']
-    query = ret_parameters_builder['query']
-    queryAll = ret_parameters_builder['queryAll']
-    current_query = query(props) if props else queryAll
-    result = await execute_data_from_crm(database, ret_collections, current_query)
     nd = time.time()
     # print("exec time", nd - st)
     return result

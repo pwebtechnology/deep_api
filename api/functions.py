@@ -1,27 +1,8 @@
 import numpy as np
-import datetime
-from datetime import datetime
 from variables import *
 
-
 def is_date(date, start, end):
-    def parse_date(date_str):
-        if date_str == 'Empty':
-            return datetime(1, 1, 1)
-        elif isinstance(date_str, str):
-            formats = ["%Y-%m-%d", "%Y-%m-%d %H:%M:%S"]
-            for fmt in formats:
-                try:
-                    return datetime.strptime(date_str, fmt)
-                except ValueError:
-                    pass
-            raise ValueError("Could not parse date: {}".format(date_str))
-        else:
-            return date_str
-    start_dt = parse_date(start)
-    end_dt = parse_date(end)
-    date_dt = parse_date(date)
-    return start_dt <= date_dt <= end_dt
+    return date >= start and date <= end
 
 def to_date(date_str, format):
     return datetime.strptime(date_str, format)
