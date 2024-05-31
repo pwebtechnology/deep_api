@@ -847,3 +847,4 @@ async def get_total_builder_data_props():
     print("total time", nd - st)
     return json.dumps(result)
 print(asyncio.run(getTotalAffilatesDataCompare(props)))
+
