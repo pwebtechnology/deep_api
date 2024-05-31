@@ -97,23 +97,3 @@ async def total_data_compare():
 
 
 
-@app.route('/get_builder_data_total', methods = ['GET','OPTIONS'])
-async def get_builder_data_total():
-    return data
-
-
-@app.route('/get_builder_data_props', methods = ['GET','OPTIONS'])# params = created_from , created_to , ftd_from , ftd_to , registered_from , registered_to , group_by[]
-async def get_builder_data_props():
-    data = await get_total_builder_data()
-    response = Response(data, content_type='application/json')
-    response.headers.add("Access-Control-Allow-Origin", "https://deep-traff-analysis.vercel.app")
-    response.headers.add("ngrok-skip-browser-warning", '69420')
-    response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization, ngrok-skip-browser-warning , Access-Control-Allow-Headers, Access-Control-Allow-Origin, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
-    response.headers.add("Access-Control-Allow-Credentials", "true")
-   # response.headers.add("ngrok-skip-browser-warning", 'true')
-    return response
-
-# strart = time.time()
-asyncio.run(app.run(host='0.0.0.0', port=5000))
-# end = time.time()
-# print("time exec", end - strart)
